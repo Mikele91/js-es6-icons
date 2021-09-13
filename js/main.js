@@ -110,11 +110,11 @@ const icons = [
 ];
 // Partendo dalla seguente struttura dati , mostriamo in pagina tutte le icone disponibili come da layout.
 icons.forEach((elem) =>{
-    console.log(`<div id="card" class="card">
+    document.getElementById("container").innerHTML +=(`<div id="card" class="card">
     <i class="${elem.family}  ${elem.prefix}${elem.name}"></i>
     <div id="nome_card" class="nome_card">
         ${elem.name}
     </div>
 </div>`);
-}
+}                         
 );
