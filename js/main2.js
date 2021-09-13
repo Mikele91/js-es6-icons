@@ -110,10 +110,31 @@ const icons = [
         category: "animal"
 	},
 ];
-const containerIcons= document.getElementById("container");
+const colors = {
+	food: "pink",
+	animal: "green",
+	beverage: "yellow"
+};
+
+// funzioni 
+
+// arrey di icone e dove stampare 
+const containerIcons = document.getElementById("container");
+printIcons= (arr, container) =>{
+
+    arr.forEach((elm) => {
+        const {name, family, prefix, color} = elm;
+        container.innerHTML +=`
+                        <div class="card">
+                        <i class="${family} ${prefix}${name}" style="color:${color}"></i>
+                        <div class="text_icon">${name}</div>
+                        </div> `  
+    });
+}
+
 icons.forEach((elm) => {
     const {name, family, prefix} = elm;
-    containerIcons +=`
+    containerIcons.innerHTML +=`
                     <div class="card">
                     <i class="${family} ${prefix}${name}"></i>
                     <div class="text_icon">${name}</div>
@@ -121,6 +142,18 @@ icons.forEach((elm) => {
 });
 // Milestone 2
 // Coloriamo le icone per tipo
+
+let iconsColors = icons.map(
+    (elm) =>{
+        return{
+            ...elm,
+            color: colors[elm.category],
+        }
+        
+    }
+    
+    );
+
 // Milestone 3
 // Creiamo una select con i tipi di icone e usiamola per filtrare le icone
 
