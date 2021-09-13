@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Acme', sans-serif;
+    height: 100vh;
+
+}
+
+header{
+    height: 400px;  
+}
+h1{
+    padding: 10px;
+    color: rgb(41, 177, 221);
+    
+}
+
+#header_bottom{
+    height: 60px;
+    background-color:rgb(41, 177, 221) ;
+}
+#container{
+    height: calc(100%-400px) ;
+    background-color: gray;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.card{
+    padding: 10px, 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: white;
+}
+.fa-apple-alt{
+
+    color: yellow;
+    font-size: 30px;
+
+}
