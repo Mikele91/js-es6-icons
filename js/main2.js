@@ -132,14 +132,7 @@ printIcons= (arr, container) =>{
     });
 }
 
-icons.forEach((elm) => {
-    const {name, family, prefix} = elm;
-    containerIcons.innerHTML +=`
-                    <div class="card">
-                    <i class="${family} ${prefix}${name}"></i>
-                    <div class="text_icon">${name}</div>
-                    </div> `  
-});
+
 // Milestone 2
 // Coloriamo le icone per tipo
 
@@ -148,12 +141,44 @@ let iconsColors = icons.map(
         return{
             ...elm,
             color: colors[elm.category],
-        }
-        
-    }
-    
+        } 
+    }   
     );
 
+
+    printIcons(iconsColors,containerIcons);
 // Milestone 3
 // Creiamo una select con i tipi di icone e usiamola per filtrare le icone
 
+const iconCategories =[];
+icons.forEach(
+    (elm)=> {
+        if( iconCategories.includes(elm.category) ==false ){
+
+            iconCategories.push(elm.category);
+        }
+    }
+)
+console.log(iconCategories);
+iconCategories.forEach((elm)=> {
+document.getElementById("category").innerHTML+= `<option value="${elm}">${elm}</option>`;
+}
+);
+
+const select =document.getElementById("category");
+
+select.addEventListener("change",
+()=>{
+    containerIcons.innerHTML ="";
+    // recupero valore select 
+    const iconsFilter= iconsColors.filter(
+        (elem) => {
+            if (elem.category == select.value || select.value ==""){
+                return true;
+            }
+            return false;
+        }
+    )
+    printIcons (iconsFilter, containerIcons);
+}
+);
