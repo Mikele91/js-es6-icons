@@ -23,27 +23,30 @@ h1{
     background-color:rgb(41, 177, 221) ;
 }
 #container{
-    height: calc(100%-400px) ;
+    height: calc(100% - 100px) ;
     background-color: gray;
     overflow-y: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-content: flex-start;
 }
 .card{
-    padding: 10px, 20px;
+    /* padding: 10px, 20px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100px;
     width: 200px;
+    /* width: (100% / 5 - 20px); */
     border-radius: 10px;
     background-color: white;
 }
-.fa-apple-alt{
-
-    color: yellow;
-    font-size: 30px;
+.card i{
+    font-size: 300px;
+}
+.fa-apple-alt{ 
+    font-size: 40px;
 
 }
