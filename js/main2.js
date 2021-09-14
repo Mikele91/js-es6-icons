@@ -122,14 +122,14 @@ const colors = {
 const containerIcons = document.getElementById("container");
 printIcons= (arr, container) =>{
 
-    arr.forEach((elm) => {
+        arr.forEach((elm) => {
         const {name, family, prefix, color} = elm;
         container.innerHTML +=`
                         <div class="card">
                         <i class="${family} ${prefix}${name}" style="color:${color}"></i>
                         <div class="text_icon">${name}</div>
                         </div> `  
-    });
+        });
 }
 
 
@@ -137,48 +137,51 @@ printIcons= (arr, container) =>{
 // Coloriamo le icone per tipo
 
 let iconsColors = icons.map(
-    (elm) =>{
+        (elm) =>{
         return{
-            ...elm,
-            color: colors[elm.category],
+                ...elm,
+                color: colors[elm.category],
         } 
-    }   
-    );
+        }   
+);
 
 
-    printIcons(iconsColors,containerIcons);
+printIcons(iconsColors,containerIcons);
 // Milestone 3
 // Creiamo una select con i tipi di icone e usiamola per filtrare le icone
 
 const iconCategories =[];
+//salvo ogni singola categoria una volta nell' arrey iconCategories
 icons.forEach(
-    (elm)=> {
-        if( iconCategories.includes(elm.category) ==false ){
+        (elm)=> {
+                if( iconCategories.includes(elm.category) ==false ){
 
-            iconCategories.push(elm.category);
+                iconCategories.push(elm.category);
         }
-    }
+        }
 )
 console.log(iconCategories);
+
+// per ogni categoria aggiungiamo una option
 iconCategories.forEach((elm)=> {
 document.getElementById("category").innerHTML+= `<option value="${elm}">${elm}</option>`;
 }
 );
-
+// in base alla categoria stampiamo in pagina le card 
 const select =document.getElementById("category");
 
 select.addEventListener("change",
 ()=>{
-    containerIcons.innerHTML ="";
+        containerIcons.innerHTML ="";
     // recupero valore select 
-    const iconsFilter= iconsColors.filter(
+        const iconsFilter= iconsColors.filter(
         (elem) => {
-            if (elem.category == select.value || select.value ==""){
-                return true;
-            }
-            return false;
+                if (elem.category == select.value || select.value ==""){
+                return true; // per tenere questo elemento!
+                }
+                return false;// skippa l'elemento!
         }
-    )
-    printIcons (iconsFilter, containerIcons);
+        )
+        printIcons (iconsFilter, containerIcons);
 }
 );
